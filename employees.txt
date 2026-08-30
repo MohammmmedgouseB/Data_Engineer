@@ -1,0 +1,5 @@
+Gouse,22,Coimbatore,Python
+Rahul,25,Chennai,SQL
+Arun,19,Bangalore,Python
+Vijay,28,Coimbatore,PySpark
+Priya,24,Chennai,Pandas
