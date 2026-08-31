@@ -5,22 +5,36 @@ employees = {
     "Vijay": [28, "Coimbatore", "PySpark"],
     "Priya": [24, "Chennai", "Pandas"]
 }
+def create_employee_file():
+    with open ("employees.txt","w") as file:
+        for name,details in employees.items():
+            file.write(f"{name},{details[0]},{details[1]},{details[2]}\n")
 
-with open ("employees.txt","w") as file:
-    for name,details in employees.items():
-        file.write(f"{name},{details[0]},{details[1]},{details[2]}\n")
+def search_by_skill():
+    with open("employees.txt","r") as file:
+        value = input("Enter the skill : ")
+        Found = False
+        with open("result.txt","w") as res_file:
+            for i in file:
+                name,age,city,skill = i.strip().split(",")
+                if skill == value:
+                    Found = True
+                    res_file.write(f"{name},{age},{city},{skill}\n")
+            return Found
+create_employee_file()
+result = search_by_skill()
 
-with open("employees.txt","r") as file:
-    count = 0
-    sum_age = 0
-    avg_age = 0 
-    for i in file:
-        name,age,city,skill = i.strip().split(",")
-        sum_age += int(age)
-        count+=1
-    avg_age = sum_age/count
-    print(avg_age)
-        
+if not result :
+    print("Skill not found")
+
+with open("result.txt","r") as res_file:
+    print(res_file.read())
+
+
+
+
+
+
 
     #     if largest < int(age):
     #         largest = int(age)
